@@ -649,8 +649,8 @@ class ElasticsearchSearchBackend(BaseSearchBackend):
                     else:
                         additional_fields['_distance'] = None
 
-                # Emergency hotfix as Haystack doesn't prevent indexing reserved keys
-                additional_fields.pop('score')
+                # Emergency hotfix as Haystack doesn't prevent indexing reversed key
+                additional_fields.pop('score', None)
                 result = result_class(app_label, model_name, source[DJANGO_ID], raw_result['_score'], **additional_fields)
                 results.append(result)
             else:
