@@ -163,7 +163,7 @@ class Command(BaseCommand):
             help='Remove objects from the index that are no longer present in the database.'
         )
         parser.add_argument(
-            '-u', '--using', action='append', default=[],
+            '-u', '--using', action='append', default=['default'],
             help='Update only the named backend (can be used multiple times). '
                  'By default all backends will be updated.'
         )
