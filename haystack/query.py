@@ -626,6 +626,8 @@ class SearchQuerySet(object):
         query = self.query._clone()
         clone = klass(query=query)
         clone._load_all = self._load_all
+        clone._using = self._using
+
         return clone
 
 
