@@ -7,7 +7,7 @@ import time
 from threading import Thread
 
 from django.test import TestCase
-from django.utils.six.moves import queue
+from six.moves import queue
 from test_haystack.core.models import (AFifthMockModel, AThirdMockModel, ManyToManyLeftSideModel,
                                        ManyToManyRightSideModel, MockModel)
 

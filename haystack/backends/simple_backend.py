@@ -9,7 +9,7 @@ from warnings import warn
 
 from django.conf import settings
 from django.db.models import Q
-from django.utils import six
+import six
 
 from haystack import connections
 from haystack.backends import BaseEngine, BaseSearchBackend, BaseSearchQuery, log_query, SearchNode

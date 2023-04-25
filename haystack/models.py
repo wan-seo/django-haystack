@@ -5,8 +5,8 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
 
 from django.core.exceptions import ObjectDoesNotExist
-from django.utils import six
-from django.utils.encoding import force_text
+import six
+from django.utils.encoding import force_str
 from django.utils.text import capfirst
 
 from haystack.exceptions import NotHandled, SpatialError
@@ -55,7 +55,7 @@ class SearchResult(object):
         return "<SearchResult: %s.%s (pk=%r)>" % (self.app_label, self.model_name, self.pk)
 
     def __unicode__(self):
-        return force_text(self.__repr__())
+        return force_str(self.__repr__())
 
     def __getattr__(self, attr):
         if attr == '__getnewargs__':
@@ -150,7 +150,7 @@ class SearchResult(object):
             self.log.error("Model could not be found for SearchResult '%s'.", self)
             return u''
 
-        return force_text(capfirst(self.model._meta.verbose_name))
+        return force_str(capfirst(self.model._meta.verbose_name))
 
     verbose_name = property(_get_verbose_name)
 
@@ -159,7 +159,7 @@ class SearchResult(object):
             self.log.error("Model could not be found for SearchResult '%s'.", self)
             return u''
 
-        return force_text(capfirst(self.model._meta.verbose_name_plural))
+        return force_str(capfirst(self.model._meta.verbose_name_plural))
 
     verbose_name_plural = property(_get_verbose_name_plural)
 

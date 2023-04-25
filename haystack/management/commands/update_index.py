@@ -9,7 +9,7 @@ from datetime import timedelta
 
 from django.core.management.base import BaseCommand
 from django.db import close_old_connections, reset_queries
-from django.utils.encoding import force_text, smart_bytes
+from django.utils.encoding import force_str, smart_bytes
 from django.utils.timezone import now
 
 from haystack import connections as haystack_connections
@@ -257,7 +257,7 @@ class Command(BaseCommand):
 
             if self.verbosity >= 1:
                 self.stdout.write(u"Indexing %d %s" % (
-                    total, force_text(model._meta.verbose_name_plural))
+                    total, force_str(model._meta.verbose_name_plural))
                 )
 
             batch_size = self.batchsize or backend.batch_size

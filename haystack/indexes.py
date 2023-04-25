@@ -7,8 +7,8 @@ import threading
 import warnings
 
 from django.core.exceptions import ImproperlyConfigured
-from django.utils.encoding import force_text
-from django.utils.six import with_metaclass
+from django.utils.encoding import force_str
+from six import with_metaclass
 
 from haystack import connection_router, connections
 from haystack.constants import DEFAULT_ALIAS, DJANGO_CT, DJANGO_ID, ID, Indexable
@@ -190,7 +190,7 @@ class SearchIndex(with_metaclass(DeclarativeMetaclass, threading.local)):
         self.prepared_data = {
             ID: get_identifier(obj),
             DJANGO_CT: get_model_ct(obj),
-            DJANGO_ID: force_text(obj.pk),
+            DJANGO_ID: force_str(obj.pk),
         }
 
         for field_name, field in self.fields.items():
